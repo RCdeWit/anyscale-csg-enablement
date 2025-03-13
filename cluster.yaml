@@ -1,0 +1,23 @@
+cluster_name: rob-csg-enablement
+
+# Cloud-provider specific configuration.
+provider:
+    type: aws
+    region: us-west-2
+
+docker:
+  image: "rayproject/ray:latest"
+  container_name: "ray_container"
+
+max_workers: 10
+
+available_node_types:
+    ray.head.default:
+        resources: {}
+        node_config:
+            InstanceType: m5.large
+    ray.worker.default:
+        min_workers: 0
+        resources: {}
+        node_config:
+            InstanceType: m5.large
